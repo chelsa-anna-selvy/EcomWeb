@@ -1,0 +1,31 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% block title %}
+KidsPark | Home
+{% endblock %}
+{% block content %}
+<div class="row m-5">
+    <div class="col-9"></div>
+    <div class="col-3"><a href="{% url 'add_product'%}">Add New Product</a></div>
+</div>
+<div class="row m-5">
+{% for product in products %}
+<div class="col-3">
+    <div class="card" style="width: 18rem;height:500px">
+        <img src="{{product.image.url}}" class="card-img-top" height="200" alt="{{ product.id}}">
+        <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <p class="card-text">Rs. {{product.price}}/-</p>
+        <p class="card-text">{{product.stock}} available</p>
+        <p class="card-text">{{product.category.name}}</p>
+        
+        <a href="{% url 'edit_product' product.id %}" class="btn btn-primary">EDIT</a>
+        <a href="{% url 'delete_product' product.id %}" class="btn btn-danger">DELETE</a>
+
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
+

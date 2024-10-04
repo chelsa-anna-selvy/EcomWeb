@@ -1,0 +1,15 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% block title %}
+KidsPark | UpdateCategory
+{% endblock %}
+{% block content %}
+<div class="row m-3">
+    <div class="col-12">
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class ="btn btn-primary mt-3"  value="Update Category"/>
+        </form>
+    </div>
+</div>
+{% endblock %}
